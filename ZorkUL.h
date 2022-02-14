@@ -13,8 +13,8 @@ class ZorkUL {
 private:
 	Parser parser;
 	Room *currentRoom;
-  vector <Room*> rooms;
-  
+	vector <Room*> rooms;
+
 	void createRooms();
 	void printWelcome();
 	bool processCommand(Command command);

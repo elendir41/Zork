@@ -3,11 +3,11 @@
 using namespace std;
 #include "ZorkUL.h"
 
-int main(int argc, char *argv[]) {
-	ZorkUL temp;
-	temp.play();
-	return 0;
-}
+//int main(int argc, char *argv[]) {
+//	ZorkUL temp;
+//	temp.play();
+//	return 0;
+//}
 
 ZorkUL::ZorkUL() {
 	createRooms();
@@ -106,13 +106,13 @@ bool ZorkUL::processCommand(Command command) {
 
 	else if (commandWord.compare("map") == 0)
 		{
-        cout << "[h] --- [f] --- [g] --- [j]" << endl;
-	    	cout << "         |         " << endl;
-        cout << "         |         " << endl;
-		    cout << "[c] --- [a] --- [b]" << endl;
-		    cout << "         |         " << endl;
-		    cout << "         |         " << endl;
-    		cout << "[i] --- [d] --- [e]" << endl;
+			cout << "[h] --- [f] --- [g] --- [j]" << endl;
+			cout << "         |         " << endl;
+			cout << "         |         " << endl;
+			cout << "[c] --- [a] --- [b]" << endl;
+			cout << "         |         " << endl;
+			cout << "         |         " << endl;
+			cout << "[i] --- [d] --- [e]" << endl;
 		}
 
 	else if (commandWord.compare("go") == 0)
@@ -120,20 +120,23 @@ bool ZorkUL::processCommand(Command command) {
 
     else if (commandWord.compare("take") == 0)
     {
-       	if (!command.hasSecondWord()) {
-		cout << "incomplete input"<< endl;
+        if (!command.hasSecondWord())
+        {
+            cout << "incomplete input"<< endl;
         }
-        else
-         if (command.hasSecondWord()) {
-        cout << "you're trying to take " + command.getSecondWord() << endl;
-        int location = currentRoom->isItemInRoom(command.getSecondWord());
-        if (location  < 0 )
-            cout << "item is not in room" << endl;
-        else
-            cout << "item is in room" << endl;
-            cout << "index number " << + location << endl;
-            cout << endl;
-            cout << currentRoom->longDescription() << endl;
+        else if (command.hasSecondWord())
+        {
+            cout << "you're trying to take " + command.getSecondWord() << endl;
+            int location = currentRoom->isItemInRoom(command.getSecondWord());
+            if (location  < 0 )
+                cout << "item is not in room" << endl;
+            else
+            {
+                cout << "item is in room" << endl;
+                cout << "index number " << + location << endl;
+                cout << endl;
+                cout << currentRoom->longDescription() << endl;
+            }
         }
     }
 
@@ -143,10 +146,21 @@ bool ZorkUL::processCommand(Command command) {
     }
     else if (commandWord.compare("teleport") == 0)
     {
-        int r = rand() % rooms.size();
-        Room *nextRoom = rooms[r];
-        currentRoom = nextRoom;
-        cout << currentRoom->longDescription() << endl;
+		if (command.hasSecondWord())
+		{
+			string roomName = command.getSecondWord();
+			int index = roomName[0] - 97;
+			Room *nextRoom = rooms[index];
+			currentRoom = nextRoom;
+			cout << currentRoom->longDescription() << endl;
+		}
+		else
+		{
+			int r = rand() % rooms.size();
+			Room *nextRoom = rooms[r];
+			currentRoom = nextRoom;
+			cout << currentRoom->longDescription() << endl;
+		}
     }
     /*
     {
@@ -160,7 +174,8 @@ bool ZorkUL::processCommand(Command command) {
         }
     }
 */
-    else if (commandWord.compare("quit") == 0) {
+    else if (commandWord.compare("quit") == 0)
+    {
 		if (command.hasSecondWord())
 			cout << "overdefined input"<< endl;
 		else
@@ -168,6 +183,7 @@ bool ZorkUL::processCommand(Command command) {
 	}
 	return false;
 }
+
 /** COMMANDS **/
 void ZorkUL::printHelp() {
 	cout << "valid inputs are; " << endl;
