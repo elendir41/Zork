@@ -4,7 +4,8 @@ Student ID: 21363234
 
 This project is the implementation I made during the spring semester 2022 for CS-4076 Event Driven Programming.
 
-The .exe is in the debug folder and the video is in the root of the folder.
+The ZorkGUI.pro and the video are in the root of the folder.
+Link for the github: https://github.com/elendir41/Zork.git
 
 For the wordle game, there txt file named wordle.txt with the list of the words in the game.
 
