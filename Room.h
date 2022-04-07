@@ -2,32 +2,49 @@
 #define ROOM_H_
 
 #include <map>
-#include <string>
+#include <QString>
 #include <vector>
 #include "item.h"
+#include "enemy.h"
+#include "mainwindow.h"
+#include "Character.h"
+
 using namespace std;
 using std::vector;
 
 class Room {
 
+    friend class ZorkUL;
+    friend class MainWindow;
+    friend void Character::Attack(Enemy *enemy, int index);
+
 private:
-	string description;
-	map<string, Room*> exits;
-	string exitString();
-    vector <Item> itemsInRoom;
+    QString description;
+    map<QString, Room*> exits;
+    QString exitString();
+    vector<Enemy*> enemiesInRoom;
+    bool isLocked;
+
+
 
 
 public:
     int numberOfItems();
-	Room(string description);
+    vector <Item*> itemsInRoom;
+
+    Room(QString description, bool isLocked = false);
 	void setExits(Room *north, Room *east, Room *south, Room *west);
-	string shortDescription();
-	string longDescription();
-	Room* nextRoom(string direction);
+    QString shortDescription();
+    QString longDescription();
+    Room* nextRoom(QString direction);
     void addItem(Item *inItem);
-    string displayItem();
-    int isItemInRoom(string inString);
-    void removeItemFromRoom(int location);
+    QString displayItem();
+    QString DisplayEnemies();
+    int isItemInRoom(QString inString);
+    bool GetIsLocked();
+    inline void SetIsLocked(bool value) {this->isLocked = value;};
+    Item* removeItemFromRoom(int location);
+    inline map<QString, Room*> GetExits() {return exits;} ;
 };
 
 #endif

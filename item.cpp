@@ -1,47 +1,33 @@
 #include "item.h"
+#include "Character.h"
 
-Item::Item (string inDescription, int inWeightGrams, float inValue/**, int weaponCheck*/) {
-	description = inDescription;
-	setWeight(inWeightGrams);
-	value = inValue;
-	/**weaponCheck(isWeapon);*/
+Item::Item (QString name, ObjectType type) {
+    this->name = name;
+    this->type = type;
 }
 
-Item::Item(string inDescription) {
-	description = inDescription;
+Item::Item(QString name) {
+    this->name = name;
 }
 
-void Item::setWeight(int inWeightGrams)
+Item::~Item()
 {
-    if (inWeightGrams > 9999 || inWeightGrams < 0)
-       cout << "weight invalid, must be 0<weight<9999" ;
-    else
-	   weightGrams = inWeightGrams;
+    delete this;
 }
 
-void Item::setValue(float inValue)
+ObjectType Item::GetType()
 {
-    if (inValue > 9999 || inValue < 0)
-       cout << "value invalid, must be 0<value<9999" ;
-    else
-	   value = inValue;
+    return type;
 }
 
-/**void Item::setWeaponCheck(int isWeapon)
-{
-    if(isWeapon > 0 || isWeapon < 0)
-        cout << "Item not a weapon" ;
-    else
-        cout << "Item is a weapon" ;
-}*/
 
-string Item::getShortDescription()
+
+QString Item::GetLongDescription()
 {
-	return description;
+    return " item(s), " + name + ".\n";
 }
 
-string Item::getLongDescription()
+void Item::UseItem(int index)
 {
-	return " item(s), " + description + ".\n";
+    MainWindow::Instance->Print("You can not do anything with  " + name + " like that");
 }
-

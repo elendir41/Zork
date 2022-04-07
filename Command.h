@@ -1,18 +1,18 @@
 #ifndef COMMAND_H_
 #define COMMAND_H_
 
-#include <string>
+#include <QString>
 using namespace std;
 
 class Command {
 private:
-	string commandWord;
-	string secondWord;
+    QString commandWord;
+    QString secondWord;
 
 public:
-	Command(string firstWord, string secondWord);
-	string getCommandWord();
-	string getSecondWord();
+    Command(QString firstWord, QString secondWord);
+    QString getCommandWord();
+    QString getSecondWord();
 	bool isUnknown();
 	bool hasSecondWord();
 };

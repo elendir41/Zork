@@ -1,32 +1,40 @@
 #ifndef ZORKUL_H_
 #define ZORKUL_H_
 
+#include "mainwindow.h"
+#include "weapon.h"
 #include "Command.h"
-#include "Parser.h"
 #include "Room.h"
 #include "item.h"
+#include "enemy.h"
+#include "gobelin.h"
 #include <iostream>
-#include <string>
+#include <QString>
+
 using namespace std;
 
 class ZorkUL {
 private:
-	Parser parser;
-	Room *currentRoom;
+    Room *currentRoom;
 	vector <Room*> rooms;
+    MainWindow *window;
 
 	void createRooms();
-	void printWelcome();
-	bool processCommand(Command command);
-	void printHelp();
 	void goRoom(Command command);
     void createItems();
     void displayItems();
 
 public:
+    inline static ZorkUL *Instance = nullptr;
+
 	ZorkUL();
 	void play();
-	string go(string direction);
+    void Teleport();
+    void EnemiesAttack();
+    void printWelcome();
+
+    Room* GetCurrentRoom();
+    QString go(QString direction);
 };
 
 #endif /*ZORKUL_H_*/

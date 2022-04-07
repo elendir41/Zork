@@ -1,0 +1,27 @@
+Clément DO ROSARIO
+Student ID: 21363234
+
+
+This project is the implementation I made during the spring semester 2022 for CS-4076 Event Driven Programming.
+
+The .exe is in the debug folder and the video is in the root of the folder.
+
+For the wordle game, there txt file named wordle.txt with the list of the words in the game.
+
+Here the list of of what I have implemented:
+	- virtual functions
+	- namespaces
+	- operator overloading
+	- abstract class
+	- copy constructors
+	- pre-processor directive
+	- c++ object construction sequence
+	- initializer list
+	- c++ references
+	- pointers
+	- inheritance
+	- Destructors
+	- header files
+	- arrays and pointers
+	- friendship
+	- private, protected and public

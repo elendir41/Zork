@@ -1,6 +1,7 @@
 #include "CommandWords.h"
+#include "mainwindow.h"
 
-vector<string> CommandWords::validCommands;
+vector<QString> CommandWords::validCommands;
 
 /**
  * Constructor - initialise the command words.
@@ -22,7 +23,7 @@ CommandWords::CommandWords() {
  * Check whether a given String is a valid command word.
  * Return true if it is, false if it isn't.
  **/
-bool CommandWords::isCommand(string aString) {
+bool CommandWords::isCommand(QString aString) {
 	for (unsigned int i = 0; i < validCommands.size(); i++)
 	{
 		if (validCommands[i].compare(aString) == 0)
@@ -37,9 +38,12 @@ bool CommandWords::isCommand(string aString) {
  */
 void CommandWords::showAll() {
 	//Loops through validCommands and prints each to the screen.
+    QString allCommands = "";
 	for (unsigned int i = 0; i < validCommands.size(); i++)
 	{
-		cout << validCommands[i]<< "  ";
+        allCommands += validCommands[i] + "  ";
+        //cout << validCommands[i]<< "  ";
 	}
-	cout << endl;
+    //cout << endl;
+    MainWindow::Instance->Print(allCommands);
 }

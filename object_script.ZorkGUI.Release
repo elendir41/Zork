@@ -1,0 +1,17 @@
+release/Character.o
+release/Command.o
+release/Room.o
+release/ZorkUL.o
+release/enemy.o
+release/gobelin.o
+release/healthpotion.o
+release/inventorywidget.o
+release/item.o
+release/key.o
+release/main.o
+release/mainwindow.o
+release/weapon.o
+release/wordle.o
+release/qrc_images.o
+release/moc_inventorywidget.o
+release/moc_mainwindow.o
