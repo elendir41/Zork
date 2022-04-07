@@ -8,6 +8,8 @@ The ZorkGUI.pro and the video are in the root of the folder.
 Link for the github: https://github.com/elendir41/Zork.git
 
 For the wordle game, there txt file named wordle.txt with the list of the words in the game.
+To make sure everything works perfectly the build of the project has to be in the folder and not outside.
+It can be changed by going to Project -> Build and change the build directory in QT Creator.
 
 Here the list of of what I have implemented:
 	- virtual functions
